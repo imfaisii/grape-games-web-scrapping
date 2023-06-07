@@ -7,6 +7,8 @@ use MenaraSolutions\Geographer\Earth;
 
 class CountryService
 {
+    protected $countries = [];
+    
     public function __construct()
     {
         $earth = new Earth();

@@ -18,7 +18,7 @@ class ExchangeRateService
 
         $result = ScrappingService::scrapNowRates($client, $this->baseUrl);
 
-        return self::storeRates($result['final'], $result['dated'], $this->baseUrl);
+        return self::storeRates($result['final'], $result['dated']);
     }
 
     public static function storeRates(array $currencies, $dated)

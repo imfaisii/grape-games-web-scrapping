@@ -20,9 +20,15 @@ class TokenController extends Controller
                 'message' => ['The provided credentials are incorrect.'],
             ]);
 
-        $user = User::where('email', $request->email)->first();
-        $token = $user->createToken('admin-fetch');
+        $token = $this->getToken();
 
         return $this->success(['token' => $token->plainTextToken], message: 'Token success');
+    }
+
+    public static function getToken($user = null)
+    {
+        $user = User::where('email', $user['email'] ?? request()->get('email'))->first();
+
+        return $user->createToken('admin-fetch');
     }
 }
